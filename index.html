@@ -232,6 +232,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/18/maven的简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵鑫涛">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵鑫涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/18/maven的简介/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-18T15:47:34+08:00">
+                2019-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="maven的简介"><a href="#maven的简介" class="headerlink" title="maven的简介"></a>maven的简介</h1><h3 id="为什么需要maven"><a href="#为什么需要maven" class="headerlink" title="为什么需要maven"></a>为什么需要maven</h3><ul>
+<li>同样的代码要在不同的机器上运行他所需要的依赖可以放在maven仓库</li>
+<li>项目组加入新成员可以快速的配置好环境</li>
+<li>在开发其他项目的时候需要用到跟之前项目开发一样的jar包</li>
+</ul>
+<h3 id="maven是什么"><a href="#maven是什么" class="headerlink" title="maven是什么"></a>maven是什么</h3><ul>
+<li>maven是基于项目对象模型POM的软件项目管理工具</li>
+<li>是可以跨平台的，主要服务基于Java平台的仙姑构建、依赖管理、项目信息管理等</li>
+</ul>
+<h5 id="构建的过程"><a href="#构建的过程" class="headerlink" title="构建的过程"></a>构建的过程</h5><ul>
+<li>清理</li>
+<li>编译</li>
+<li>测试</li>
+<li>报告</li>
+<li>打包</li>
+<li>部署</li>
+</ul>
+<h3 id="maven的工程结构"><a href="#maven的工程结构" class="headerlink" title="maven的工程结构"></a>maven的工程结构</h3><ul>
+<li>src </li>
+<li><ul>
+<li>mian</li>
+<li><ul>
+<li>java   – 存放Java的文件 源代码等</li>
+<li>resource   –存放资源文件 比如 spring，hibernate等的配置文件</li>
+</ul>
+</li>
+<li>test</li>
+<li><ul>
+<li>Java   – 存放所有的.Java的测试文件，比如JUnit 测试类</li>
+<li>resource   –测试的资源文件夹</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>target       —目标文件的输出位置比如jar包、war包等</li>
+<li>pom.xml      —maven的项目核心配置文件</li>
+</ul>
+<h3 id="maven常用命令"><a href="#maven常用命令" class="headerlink" title="maven常用命令"></a>maven常用命令</h3><ul>
+<li>mvn compile  执行编译 会将生成文件存放在target目录中</li>
+<li>mvn clean  删除target中的目录文件</li>
+<li>mvn test    执行测试命令 执行后会在target目录中生成三个目录文件surefire、surefire-reports（测试报告）、test-classes（测试的字节码文件）</li>
+<li>mvn  package 进行打包操作 操作后的文件存放在target目录之中 例如jar包war包</li>
+<li>mvn install  将制定的jar包安装到本地仓库以便于其他工程的引用</li>
+<li>mvn clean compile 清除测试类再执行compile执行编译操作</li>
+<li>mvn clean test  先清除在进行test测试操作</li>
+<li>mvn clean package 先执行clean清除在执行package打包</li>
+<li>mvn clean install  先进行clean在执行install</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/26/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -397,7 +564,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
