@@ -176,7 +176,7 @@
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="Search" />
+						<input type="text" class="input u-search-input" placeholder="搜索" />
 						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
@@ -296,6 +296,165 @@
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal no-title">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/08/20/Storm高级/">
+      2019-08-20
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>赵鑫涛</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-08-20</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="Storm高级"><a href="#Storm高级" class="headerlink" title="Storm高级"></a>Storm高级</h3><h4 id="Storm核心之流分组"><a href="#Storm核心之流分组" class="headerlink" title="Storm核心之流分组"></a>Storm核心之流分组</h4><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1566219022407.png" alt="1566219022407"></p>
+<h5 id="stream-grouping-分类"><a href="#stream-grouping-分类" class="headerlink" title="stream grouping 分类"></a>stream grouping 分类</h5><ul>
+<li>Shuffle Grouping：随机分组。将stream中的tuple缓存后随机发放给所有bolt，可以使每个bolt中的数据量大致相等（可以较好的实现负载均衡）</li>
+<li>Fields Grouping：按字段分组，例如按groupID字段进行分组，将同一个分组的tuple分到统一任务中</li>
+<li>All Grouping:广播发送，每一个tuple都会发送到所有任务中，所以每一个bolt都会有所有的tuple</li>
+<li>Global Grouping：全局分组，这个tuple会被分配到storm中的某一个bolt,具体一点就是分配到ID值最小的一个bolt之中</li>
+<li>Non Grouping：随机分派，效果和shuffle一样</li>
+<li>Direct Grouping：直接分组，将tuple发送给制定好的任务中</li>
+<li>localOrShuffleGrouping：指如果目标Bolt 中的一个或者多个Task 和当前产生数据的Task在同一个Worker 进程里面，那么就走内部的线程间通信，将Tuple 直接发给在当前Worker进程的目的Task。否则，同shuffleGrouping。</li>
+</ul>
+<h4 id="Storm可靠性剖析"><a href="#Storm可靠性剖析" class="headerlink" title="Storm可靠性剖析"></a>Storm可靠性剖析</h4><h6 id="Storm可能出现的问题"><a href="#Storm可能出现的问题" class="headerlink" title="Storm可能出现的问题"></a>Storm可能出现的问题</h6><ul>
+<li>worker进程死掉</li>
+<li>supervisor进程死掉</li>
+<li>nimbus进程死掉</li>
+<li>节点宕机</li>
+</ul>
+<h6 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h6><ul>
+<li>(acker机制)ack/fail消息确认机制(确保一个tuple被完全处理)<ul>
+<li>在spout中发射tuple的时候需要同时发送messageid，这样才相当于开启了消息确认机制</li>
+<li>如果你的topology里面的tuple比较多的话，那么把acker的数量设置多一点,效率会高一点。</li>
+<li>通过config.setNumAckers(num)来设置一个topology里面的acker的数量，默认值是1。</li>
+<li>注意：acker用了特殊的算法，使得对于追踪每个spout tuple的状态所需要的内存量是恒定的（20 bytes) </li>
+<li>注意：如果一个tuple在指定的timeout(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS默认值为30秒)时间内没有被成功处理，那么这个tuple会被认为处理失败了。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Storm定时器分析"><a href="#Storm定时器分析" class="headerlink" title="Storm定时器分析"></a>Storm定时器分析</h4><ul>
+<li>可以指定每隔一段时间将数据整合一次存入数据库<ul>
+<li>在main中设置conf.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS, 60);// 设置本Bolt定时发射数据</li>
+<li>在bolt中使用下面代码判断是否是触发用的bolt tuple.getSourceComponent().equals(Constants.SYSTEM_COMPONENT_ID)</li>
+<li><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1566305060434.png" alt="1566305060434"></li>
+</ul>
+</li>
+</ul>
+<h4 id="StormUI的详解"><a href="#StormUI的详解" class="headerlink" title="StormUI的详解"></a>StormUI的详解</h4><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1566219892284.png" alt="1566219892284"></p>
+<ul>
+<li>deactive：未激活(暂停)</li>
+<li>emitted:emitted tuple数<ul>
+<li>与emitted的区别：如果一个task，emitted一个tuple到2个task中，则transferred tuple数是emitted tuple数的两倍</li>
+</ul>
+</li>
+<li>completelatency: spout emitting 一个tuple到spout ack这个tuple的平均时间(可以认为是tuple以及该tuple树的整个处理时间)</li>
+<li>processlatency:   bolt收到一个tuple到bolt ack这个tuple的平均时间，如果没有启动acker机制，那么值为0</li>
+<li>execute latency：bolt处理一个tuple的平均时间，不包含acker操作，单位是毫秒(也就是bolt<br>执行 execute 方法的平均时间)</li>
+<li>capacity：这个值越接近1，说明bolt或者spout基本一直在调用execute方法，说明并行度不够，需要扩展这个组件的executor数量。(调整组件并行度的依据)</li>
+<li>总结：execute latency和proces latnecy是处理消息的时效性，而capacity则表示处理能力是否已经饱和，从这3个参数可以知道topology的瓶颈所在。</li>
+</ul>
+<h4 id="Storm的优化"><a href="#Storm的优化" class="headerlink" title="Storm的优化"></a>Storm的优化</h4><h5 id="并行度的优化"><a href="#并行度的优化" class="headerlink" title="并行度的优化"></a>并行度的优化</h5><ul>
+<li>worker为storm提供工作进程，程序的并行度可以设置（包括spout和bolt的并行度，如果有acker的话还包括acker的并行度），并行度即为executor的数目。</li>
+<li>一般情况下worker与executor的比例是一比十到十五，也可以根据实际需要修改。</li>
+</ul>
+<h5 id="worker的优化"><a href="#worker的优化" class="headerlink" title="worker的优化"></a>worker的优化</h5><ul>
+<li>CPU 16核，建议配置20个worker。CPU 24或32核，30个worker</li>
+<li>默认情况下，Storm启动worker进程时，JVM的最大内存是768M，可以通过在Strom的配置文件storm.yaml中设置worker的启动参数worker.childopts: “-Xmx2048m”</li>
+<li>一个topology使用的worker数量，12个是比较合理的，这个时候吞吐量和整体性能最优。如果多增加worker进程的话，会将一些原本线程间的内存通信变为进程间的网络通信。</li>
+</ul>
+<h5 id="acker优化"><a href="#acker优化" class="headerlink" title="acker优化"></a>acker优化</h5><ul>
+<li>如果可靠性对你来说不是那么重要，那么你可以通过不跟踪这些tuple树来获取更好的性能。不去跟踪消息的话会使得系统里面的消息数量减少一半，因为对于每一个tuple都要发送一个ack消息。</li>
+<li>三种去掉可靠性的方法<ul>
+<li>第一是把config.setNumAckers(0)设置为0，在这种情况下，storm会在spout发射一个tuple之后马上调用spout的ack方法。也就是说这个tuple树不会被跟踪。</li>
+<li>第二个方法是在tuple层面去掉可靠性。你可以在发射tuple的时候不指定messageid来达到不跟踪spout中tuple的目的。</li>
+<li>最后一个方法是如果你对于一个tuple树里面的某一部分到底成不成功不是很关心，那么可以在发射这些tuple的时候unanchor它们(anchor是锚定的意思，unanchor表示不把当前这个tuple包含到tuple树中，也就是说不跟踪这个消息了)。这样这些tuple就不在tuple树里面， 也就不会被跟踪了。</li>
+</ul>
+</li>
+</ul>
+<h4 id="雪崩问题的出现原因以及解决方法"><a href="#雪崩问题的出现原因以及解决方法" class="headerlink" title="雪崩问题的出现原因以及解决方法"></a>雪崩问题的出现原因以及解决方法</h4><ul>
+<li>原因：spout发送的速度大于bolt接收的速度，导致数据堆积，不断消耗内存，最终系统崩溃，并引起数据链上多节点down掉。</li>
+<li>解决方案<ul>
+<li>增加bolt的并行度 增加它接收的速度</li>
+<li>可以通过topology.max.spout.pending来控制spout发送消息的速度，通过代码这样设置config.setMaxSpoutPending(num);<ul>
+<li>注意：这个参数表示，当下游的bolt还有topology.max.spout.pending个 tuple 没有消费完时，spout会停止调用nexttuple方法发射数据。等待下游bolt去消费，当tuple的个数少于topology.max.spout.pending个数时，spout 会继续发射数据(这个属性只对可靠消息处理有用，也就是说需要启用acker消息确认机制，在spout中emit数据的时候需要带有messageid)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -666,102 +825,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/07/26/hello-world/">
-      Hello World
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="http://yoursite.com" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>赵鑫涛</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-07-26</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1039,19 +1102,19 @@
     </div>
   
   <br>
-  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
 </div>
   <div>
-    Use
+    本站使用
     <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Blog Zhao</a>
-    as theme
+    作为主题
     
-      , 
-      total visits
+      ，
+      总访问量为
       <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      times
+      次
     
-    . 
+    。
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
@@ -1165,15 +1228,15 @@
 <!-- 复制 -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  let COPY_SUCCESS = "Copied";
-  let COPY_FAILURE = "Copy failed";
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
   /*页面载入完成后，创建复制按钮*/
   !function (e, t, a) {
     /* code */
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       var clipboard = new ClipboardJS('.btn-copy', {
