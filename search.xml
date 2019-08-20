@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2019/08/20/RDD%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96/"/>
+      <url>/2019/08/20/RDD%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96/</url>
+      
+        <content type="html"><![CDATA[<h2 id="RDD的持久化"><a href="#RDD的持久化" class="headerlink" title="RDD的持久化"></a>RDD的持久化</h2><h4 id="一、RDD为什么要持久化"><a href="#一、RDD为什么要持久化" class="headerlink" title="一、RDD为什么要持久化"></a>一、RDD为什么要持久化</h4>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Storm高级以及优化</title>
       <link href="/2019/08/20/Storm%E9%AB%98%E7%BA%A7/"/>
       <url>/2019/08/20/Storm%E9%AB%98%E7%BA%A7/</url>
