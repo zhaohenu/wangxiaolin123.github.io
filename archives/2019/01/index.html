@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives: 2019 | Zhao</title>
+  <title>Archives: 2019/1 | Zhao</title>
   
   
   <meta name="description" content="技术和生活，融为一体">
@@ -289,106 +289,9 @@
         
           
         
-          
-        
       
     
     
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/08/20/Storm高级/">
-      Storm高级以及优化
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="http://yoursite.com" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>赵鑫涛</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-08-20</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h3 id="Storm高级"><a href="#Storm高级" class="headerlink" title="Storm高级"></a>Storm高级</h3><h4 id="Storm核心之流分组"><a href="#Storm核心之流分组" class="headerlink" title="Storm核心之流分组"></a>Storm核心之流分组</h4><p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1566219022407.png" alt="1566219022407"></p>
-<h5 id="stream-grouping-分类"><a href="#stream-grouping-分类" class="headerlink" title="stream grouping 分类"></a>stream grouping 分类</h5><ul>
-<li>Shuffle Grouping：随机分组。将stream中的tuple缓存后随机发放给所有bolt，可以使每个bolt中的数据量大致相等（可以较好的实现负载均衡）</li>
-<li>Fields Grouping：按字段分组，例如按groupID字段进行分组，将同一个分组的tuple分到统一任务中</li>
-<li>All Grouping:广播发送，每一个tuple都会发送到所有任务中，所以每一个bolt都会有所有的tuple</li>
-<li>Global Grouping：全局分组，这个tuple会被分配到storm中的某一个bolt,具体一点就是分配到ID值最小的一个bolt之中
-      
-        <div class="readmore">
-          <a href="/2019/08/20/Storm高级/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            閱讀全文
-          </a>
-        </div>
-      
-    </div>
-    
-  </section>
-</article>
-
-          </div>
-        
       
         
           <div class='post-wrapper'>

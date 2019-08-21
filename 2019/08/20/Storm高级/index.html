@@ -370,7 +370,7 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <h3 id="Storm高级"><a href="#Storm高级" class="headerlink" title="Storm高级"></a>Storm高级</h3><h4 id="Storm核心之流分组"><a href="#Storm核心之流分组" class="headerlink" title="Storm核心之流分组"></a>Storm核心之流分组</h4><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1566219022407.png" alt="1566219022407"></p>
+          <h3 id="Storm高级"><a href="#Storm高级" class="headerlink" title="Storm高级"></a>Storm高级</h3><h4 id="Storm核心之流分组"><a href="#Storm核心之流分组" class="headerlink" title="Storm核心之流分组"></a>Storm核心之流分组</h4><p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1566219022407.png" alt="1566219022407"></p>
 <h5 id="stream-grouping-分类"><a href="#stream-grouping-分类" class="headerlink" title="stream grouping 分类"></a>stream grouping 分类</h5><ul>
 <li>Shuffle Grouping：随机分组。将stream中的tuple缓存后随机发放给所有bolt，可以使每个bolt中的数据量大致相等（可以较好的实现负载均衡）</li>
 <li>Fields Grouping：按字段分组，例如按groupID字段进行分组，将同一个分组的tuple分到统一任务中</li>
@@ -400,11 +400,11 @@
 <li>可以指定每隔一段时间将数据整合一次存入数据库<ul>
 <li>在main中设置conf.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS, 60);// 设置本Bolt定时发射数据</li>
 <li>在bolt中使用下面代码判断是否是触发用的bolt tuple.getSourceComponent().equals(Constants.SYSTEM_COMPONENT_ID)</li>
-<li><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1566305060434.png" alt="1566305060434"></li>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1566305060434.png" alt="1566305060434"></li>
 </ul>
 </li>
 </ul>
-<h4 id="StormUI的详解"><a href="#StormUI的详解" class="headerlink" title="StormUI的详解"></a>StormUI的详解</h4><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1566219892284.png" alt="1566219892284"></p>
+<h4 id="StormUI的详解"><a href="#StormUI的详解" class="headerlink" title="StormUI的详解"></a>StormUI的详解</h4><p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1566219892284.png" alt="1566219892284"></p>
 <ul>
 <li>deactive：未激活(暂停)</li>
 <li>emitted:emitted tuple数<ul>
@@ -457,10 +457,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-20T21:58:58+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-21T14:16:42+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最後更新於 Aug 20, 2019</p>
+    <p>最後更新於 Aug 21, 2019</p>
   </a>
 </div>
 
@@ -542,28 +542,14 @@ Global Grouping：全局分组，这个tuple会被分配到storm中的某一个b
         
             <div class="prev-next">
                 
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一頁</h6>
-                            <h4>
-                                <a href="/2019/08/20/RDD的持久化/" rel="prev" title="">
-                                  
-                                      2019-08-20
-                                  
-                                </a>
-                            </h4>
-                            
-                        </span>
-                    </section>
-                
                 
                     <section class="next">
                         <span class="art-item-right" aria-hidden="true">
                             <h6>下一頁&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2019/08/19/Storm的详细分析/" rel="prev" title="Storm基础">
+                                <a href="/2019/01/21/maven的简介/" rel="prev" title="Maven 简介">
                                     
-                                        Storm基础
+                                        Maven 简介
                                     
                                 </a>
                             </h4>
@@ -886,10 +872,10 @@ Global Grouping：全局分组，这个tuple会被分配到storm中的某一个b
   <div>
     本站使用
     <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Blog Zhao</a>
-    作為主題
+    作为主题
     
       ，
-      總訪問量為
+      总访问量为
       <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
       次
     
