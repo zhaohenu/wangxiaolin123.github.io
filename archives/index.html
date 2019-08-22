@@ -176,7 +176,7 @@
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="搜尋" />
+						<input type="text" class="input u-search-input" placeholder="搜索" />
 						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
@@ -291,11 +291,26 @@
 	          </div>
 	      
 	          <div class="archive-item archive-post mark">
-	            <a href="/2019/08/20/Storm高级/">
-	              <time>08-20</time>
+	            <a href="/2019/04/01/Storm高级/">
+	              <time>04-01</time>
 	              <span class="title">
 	                
 	                  Storm高级以及优化
+	                
+	                
+	                
+									
+									
+	              </span>
+	            </a>
+	          </div>
+	      
+	          <div class="archive-item archive-post mark">
+	            <a href="/2019/03/21/Storm的详细分析/">
+	              <time>03-21</time>
+	              <span class="title">
+	                
+	                  Strome 基础
 	                
 	                
 	                
@@ -344,7 +359,7 @@
       <div class="social-wrapper">
         
           
-            <a href="/atom.xml"
+            <a href="https://blog.csdn.net/qq_42244078"
               class="social fas fa-rss flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
@@ -352,7 +367,7 @@
           
         
           
-            <a href="mailto:me@xaoxuu.com"
+            <a href="mailto:871110144@qq.com"
               class="social fas fa-envelope flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
@@ -360,7 +375,7 @@
           
         
           
-            <a href="https://github.com/xaoxuu"
+            <a href="https://github.com/zhaoxintaoaa"
               class="social fab fa-github flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
@@ -483,6 +498,31 @@
           
           
             
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/基础/" href="/categories/基础/"><div class='name'>基础</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
 
           
         
@@ -491,6 +531,27 @@
           
           
             
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/maven/" style="font-size: 14px; color: #999">maven</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/storm-storm优化/" style="font-size: 14px; color: #999">storm storm优化</a>
+    </div>
+  </section>
+
 
           
         
@@ -529,7 +590,7 @@
     data-mode="circulation"
     data-server="netease"
     data-type="playlist"
-    data-id="2615636388"
+    data-id="2731158843"
     data-volume="0.7">
   </div>
   <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
@@ -554,7 +615,7 @@
     <div class="social-wrapper">
       
         
-          <a href="/atom.xml"
+          <a href="https://blog.csdn.net/qq_42244078"
             class="social fas fa-rss flat-btn"
             target="_blank"
             rel="external nofollow noopener noreferrer">
@@ -562,7 +623,7 @@
         
       
         
-          <a href="mailto:me@xaoxuu.com"
+          <a href="mailto:871110144@qq.com"
             class="social fas fa-envelope flat-btn"
             target="_blank"
             rel="external nofollow noopener noreferrer">
@@ -570,7 +631,7 @@
         
       
         
-          <a href="https://github.com/xaoxuu"
+          <a href="https://github.com/zhaoxintaoaa"
             class="social fab fa-github flat-btn"
             target="_blank"
             rel="external nofollow noopener noreferrer">
@@ -588,7 +649,7 @@
     </div>
   
   <br>
-  <div><p>博客內容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW">姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0) 協議</a></p>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
 </div>
   <div>
     本站使用
@@ -714,15 +775,15 @@
 <!-- 复制 -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  let COPY_SUCCESS = "複製成功";
-  let COPY_FAILURE = "複製失敗";
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
   /*页面载入完成后，创建复制按钮*/
   !function (e, t, a) {
     /* code */
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>複製</span>';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       var clipboard = new ClipboardJS('.btn-copy', {
