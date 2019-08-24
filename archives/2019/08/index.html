@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives: 2019/8 | Zhao</title>
+  <title>Archives: 2019/8 | ZBlog</title>
   
   
   <meta name="description" content="技术和生活，融为一体">
   
 
   
-  <link rel="alternate" href="/atom.xml" title="Zhao">
+  <link rel="alternate" href="/atom.xml" title="ZBlog">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -51,7 +51,7 @@
     <cover class='cover  half'>
       
         
-  <h1 class='title'>Zhao Blog</h1>
+  <h1 class='title'>ZBlog</h1>
 
 
   <div class="m_search">
@@ -120,7 +120,7 @@
 		<div class="nav-main container container--flex">
       <a class="logo flat-box" href='/' >
         
-          Zhao
+          ZBlog
         
       </a>
 			<div class='menu navgation'>
@@ -132,7 +132,7 @@
                   
                   
                   id="home">
-									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+									<i class='fas fa-grin fa-fw'></i>&nbsp;所有博客
 								</a>
 							</li>
       			
@@ -176,7 +176,7 @@
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="搜尋" />
+						<input type="text" class="input u-search-input" placeholder="Search" />
 						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
@@ -295,7 +295,7 @@
       
         
           <div class='post-wrapper'>
-            <article class="post reveal ">
+            <article class="post reveal no-title">
   
 
 
@@ -306,8 +306,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/08/20/Storm高级/">
-      Storm高级以及优化
+    <a href="/2019/08/24/Spark优化/">
+      2019-08-24
     </a>
   </h2>
 
@@ -335,7 +335,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-08-20</p>
+    <p>2019-08-24</p>
   </a>
 </div>
 
@@ -366,19 +366,9 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="Storm高级"><a href="#Storm高级" class="headerlink" title="Storm高级"></a>Storm高级</h3><h4 id="Storm核心之流分组"><a href="#Storm核心之流分组" class="headerlink" title="Storm核心之流分组"></a>Storm核心之流分组</h4><p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1566219022407.png" alt="1566219022407"></p>
-<h5 id="stream-grouping-分类"><a href="#stream-grouping-分类" class="headerlink" title="stream grouping 分类"></a>stream grouping 分类</h5><ul>
-<li>Shuffle Grouping：随机分组。将stream中的tuple缓存后随机发放给所有bolt，可以使每个bolt中的数据量大致相等（可以较好的实现负载均衡）</li>
-<li>Fields Grouping：按字段分组，例如按groupID字段进行分组，将同一个分组的tuple分到统一任务中</li>
-<li>All Grouping:广播发送，每一个tuple都会发送到所有任务中，所以每一个bolt都会有所有的tuple</li>
-<li>Global Grouping：全局分组，这个tuple会被分配到storm中的某一个bolt,具体一点就是分配到ID值最小的一个bolt之中
-      
-        <div class="readmore">
-          <a href="/2019/08/20/Storm高级/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            閱讀全文
-          </a>
-        </div>
+      <hr>
+<h2 id="Spark-优化"><a href="#Spark-优化" class="headerlink" title="Spark 优化"></a>Spark 优化</h2><p>### </p>
+
       
     </div>
     
@@ -413,7 +403,7 @@
   <div class='content pure'>
     
       <div class='avatar'>
-        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png'/>
+        <img class='avatar' src='https://raw.githubusercontent.com/zhaoxintaoaa/images/master/11.jpeg'/>
       </div>
     
     
@@ -421,7 +411,7 @@
       <div class="social-wrapper">
         
           
-            <a href="/atom.xml"
+            <a href="https://blog.csdn.net/qq_42244078"
               class="social fas fa-rss flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
@@ -429,7 +419,7 @@
           
         
           
-            <a href="mailto:me@xaoxuu.com"
+            <a href="mailto:me@fastflink.com"
               class="social fas fa-envelope flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
@@ -437,7 +427,7 @@
           
         
           
-            <a href="https://github.com/xaoxuu"
+            <a href="https://github.com/zhaoxintaoaa"
               class="social fab fa-github flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
@@ -445,7 +435,7 @@
           
         
           
-            <a href="https://music.163.com/#/user/home?id=63035382"
+            <a href="https://music.163.com/#/my/m/music/playlist?id=2953649091"
               class="social fas fa-headphones-alt flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
@@ -560,6 +550,35 @@
           
           
             
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Categories</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/基础/" href="/categories/基础/"><div class='name'>基础</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/安装部署/" href="/categories/安装部署/"><div class='name'>安装部署</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/提高/" href="/categories/提高/"><div class='name'>提高</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
 
           
         
@@ -568,6 +587,27 @@
           
           
             
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/Elasticsearch/" style="font-size: 24px; color: #555">Elasticsearch</a> <a href="/tags/Elasticsearch-IK/" style="font-size: 14px; color: #999">Elasticsearch IK</a> <a href="/tags/maven/" style="font-size: 14px; color: #999">maven</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/storm-storm优化/" style="font-size: 14px; color: #999">storm storm优化</a>
+    </div>
+  </section>
+
 
           
         
@@ -606,7 +646,7 @@
     data-mode="circulation"
     data-server="netease"
     data-type="playlist"
-    data-id="2615636388"
+    data-id="2731158843"
     data-volume="0.7">
   </div>
   <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
@@ -631,7 +671,7 @@
     <div class="social-wrapper">
       
         
-          <a href="/atom.xml"
+          <a href="https://blog.csdn.net/qq_42244078"
             class="social fas fa-rss flat-btn"
             target="_blank"
             rel="external nofollow noopener noreferrer">
@@ -639,7 +679,7 @@
         
       
         
-          <a href="mailto:me@xaoxuu.com"
+          <a href="mailto:me@fastflink.com"
             class="social fas fa-envelope flat-btn"
             target="_blank"
             rel="external nofollow noopener noreferrer">
@@ -647,7 +687,7 @@
         
       
         
-          <a href="https://github.com/xaoxuu"
+          <a href="https://github.com/zhaoxintaoaa"
             class="social fab fa-github flat-btn"
             target="_blank"
             rel="external nofollow noopener noreferrer">
@@ -655,7 +695,7 @@
         
       
         
-          <a href="https://music.163.com/#/user/home?id=63035382"
+          <a href="https://music.163.com/#/my/m/music/playlist?id=2953649091"
             class="social fas fa-headphones-alt flat-btn"
             target="_blank"
             rel="external nofollow noopener noreferrer">
@@ -665,22 +705,47 @@
     </div>
   
   <br>
-  <div><p>博客內容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW">姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0) 協議</a></p>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
 </div>
   <div>
-    本站使用
+    Use
     <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Blog Zhao</a>
-    作为主题
+    as theme
     
-      ，
-      总访问量为
+      , 
+      total visits
       <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      次
+      times
     
-    。
+    . 
+	
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1277958104'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1277958104%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
   </div>
+		<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+		<script>
+			var now = new Date(); 
+			function createtime() { 
+				var grt= new Date("08/10/2017 17:38:00");//在此处修改你的建站时间
+				now.setTime(now.getTime()+250); 
+				days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+				hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+				if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+				seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+				document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+			} 
+		setInterval("createtime()",250);
+		</script>
+		
 </footer>
 <script>setLoadingBarProgress(80);</script>
+
+
 
 
 
@@ -791,15 +856,15 @@
 <!-- 复制 -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  let COPY_SUCCESS = "複製成功";
-  let COPY_FAILURE = "複製失敗";
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
   /*页面载入完成后，创建复制按钮*/
   !function (e, t, a) {
     /* code */
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>複製</span>';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       var clipboard = new ClipboardJS('.btn-copy', {
@@ -898,5 +963,5 @@
 
 
   <script>setLoadingBarProgress(100);</script>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
