@@ -132,7 +132,7 @@
                   
                   
                   id="home">
-									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+									<i class='fas fa-grin fa-fw'></i>&nbsp;所有博客
 								</a>
 							</li>
       			
@@ -323,7 +323,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-08-23</p>
+    <p>2019-08-24</p>
   </a>
 </div>
 
@@ -383,7 +383,7 @@
                     <a class='friend-card' style='background:#3E74C9; color:#fff'
                       target="_blank" rel="external nofollow noopener noreferrer" href='https://iochina.top'>
                       <div class='friend-left'>
-                        <img class='avatar' src='https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=tu&hs=2&pn=0&spn=0&di=94820&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=1690699292%2C1481547313&os=4115309019%2C4144163677&simid=3381667219%2C358887432&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=tu&objurl=http%3A%2F%2Fi1.17173.itc.cn%2F2009%2Fkx%2F2009%2F06%2F16%2F20090616171420490.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fhx_z%26e3B8080n_z%26e3Bv54AzdH3Fv5gpjgpAzdH3Fdaal-am-8mAzdH3Fdaalam8m808n90alb_z%26e3Bfip4s&gsm=0&islist=&querylist=' data-echo='https://raw.githubusercontent.com/wangxiaolin123/wangxiaolin123.github.io/master/images/pht.png'/>
+                        <img class='avatar' src='https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=tu&hs=2&pn=0&spn=0&di=94820&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=1690699292%2C1481547313&os=4115309019%2C4144163677&simid=3381667219%2C358887432&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=tu&objurl=http%3A%2F%2Fi1.17173.itc.cn%2F2009%2Fkx%2F2009%2F06%2F16%2F20090616171420490.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fhx_z%26e3B8080n_z%26e3Bv54AzdH3Fv5gpjgpAzdH3Fdaal-am-8mAzdH3Fdaalam8m808n90alb_z%26e3Bfip4s&gsm=0&islist=&querylist=' data-echo='https://raw.githubusercontent.com/wangxiaolin123/wangxiaolin123.github.io/master/images/pht.jpg'/>
                       </div>
                       <div class='friend-right'>
                         <p class="friend-name">林哥</p>
@@ -465,7 +465,7 @@
           
         
           
-            <a href="mailto:871110144@qq.com"
+            <a href="mailto:me@fastflink.com"
               class="social fas fa-envelope flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
@@ -723,7 +723,7 @@
         
       
         
-          <a href="mailto:871110144@qq.com"
+          <a href="mailto:me@fastflink.com"
             class="social fas fa-envelope flat-btn"
             target="_blank"
             rel="external nofollow noopener noreferrer">
@@ -762,9 +762,34 @@
       times
     
     . 
+	
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1277958104'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1277958104%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
   </div>
+		<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+		<script>
+			var now = new Date(); 
+			function createtime() { 
+				var grt= new Date("08/10/2017 17:38:00");//在此处修改你的建站时间
+				now.setTime(now.getTime()+250); 
+				days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+				hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+				if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+				seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+				document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+			} 
+		setInterval("createtime()",250);
+		</script>
+		
 </footer>
 <script>setLoadingBarProgress(80);</script>
+
+
 
 
       <script>setLoadingBarProgress(60);</script>
