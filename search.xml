@@ -315,6 +315,31 @@
     </entry>
     
     
+    
+    <entry>
+      <title>Linux</title>
+      <link href="/2018/08/21/Linux/"/>
+      <url>/2018/08/21/Linux/</url>
+      
+        <content type="html"><![CDATA[<ul><li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1566975389273.png" alt="1566975389273"></li></ul><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><a id="more"></a><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul><li>是一个免费开源的操作系统</li><li>组成部分<ul><li>内核</li><li>shell</li><li>文件系统</li><li>应用程序</li></ul></li></ul><h4 id="重要指令"><a href="#重要指令" class="headerlink" title="重要指令"></a>重要指令</h4><ul><li><p>常用指令</p><ul><li><p>pwd 列出当前全路径</p></li><li><p>ls ll ll -a 列出目录下所有文件 加a会列出隐藏文件</p></li><li><p>touch  创建一个空文件</p></li><li><p>mkdir -p 创建目录 加p是递归创建目录 且若目录存在不报错</p></li><li><p>mv old new  重命名</p></li><li><p>连接</p><ul><li>硬链接  ln  文件  连接  直接复制</li><li>软连接  ln -s  只是多加了一个快捷方式</li></ul></li><li><p>cd 切换目录</p></li><li><p>rm -rf  删除文件 r 目录 f 强制删除</p></li><li><p>cp -r old new 复制文件 r文件夹</p></li><li><p>scp -rq 跨主机  q 不显示复制细节</p></li><li><p>chmod u+x  xxx.sh 添加权限  777 最高权限  -r递归</p></li><li><p>cat -b 查看  -b带行号</p></li><li><p>more 分屏显示</p></li><li><p>tar zxcf  zxvf  压缩、解压</p><ul><li><p>z   是否同时具有 gzip 的属性？亦即是否需要用 gzip 压缩？</p><p>c   创建一个压缩文件的参数指令(create 的意思)；</p><p>x   解开一个压缩文件的参数指令！</p><p>v   压缩的过程中显示文件！</p><p>f   使用档案名字，这个参数是最后一个参数，后面只能接档案名</p></li></ul></li></ul></li><li><p>重要指令</p><ul><li><p>du  同价文件文件夹所占磁盘情况</p><ul><li>a  文件全部以及子目录下得文档等所有文件</li><li>h   文件全部以及子目录的所有文件</li><li>ch 添加total</li><li>sh  直接统计大小</li></ul></li><li><p>vi  </p><ul><li>dd  删除一行</li><li>yy p  复制粘贴</li><li>999 dd 删除所有</li></ul></li><li><p>i  进入编辑模式</p><ul><li>：wq  保存退出</li><li>：q! 不保存强制退出</li><li>/abc  查看目标所在位置 n下一个</li></ul></li><li><p>| grep  管道加过滤</p></li><li><p>wc  统计</p><ul><li>l  行数</li><li>w 单词数</li><li>c  字符数</li><li>啥也不加统计所有</li></ul></li><li><p>echo 输出 双引号不解析  单引号解析  -e解析转义字符</p></li><li><p>export  -p  列出当前所有环境变量  也可直接跟变量来临时设置环境变量</p></li><li><p>history  显示历史使用的命令  加数字显示条数 c 清除  w 保存至文件</p></li><li><p>ps  -ef  查看正在运行的进程</p></li><li><p>netstat -anp  监听的端口号</p></li><li><p>kill  加进程ID  -9 强制杀死</p></li><li><p>防火墙  临时  service iptables stop/start/status  关闭打开状态</p></li><li><p>永久 chkconfig iptables off/on 关闭打开   –list  iptables  状态</p></li><li><p>top  显示各种资源占用率</p><ul><li><p>P  按进程的CPU使用率排序</p><p>M  按进程的内存使用率排序</p></li></ul></li><li><p>df  -h  查看硬盘占用情况</p></li><li><p>who显示在线用户</p></li><li><p>uname -a  查看操作系统的版本</p></li><li><p>free 查看内存状态</p></li><li><p>clear 清屏</p></li><li><p>shutdown -h now  关机</p></li><li><p>reboot  -h now 重启</p></li><li><p>exit quit  退出当前状态</p></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
 </search>
