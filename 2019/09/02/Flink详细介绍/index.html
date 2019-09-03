@@ -800,12 +800,212 @@
 </li>
 </ul>
 </li>
+<li><p>watermark  与 event time结合使用</p>
+<ul>
+<li>触发widow进行合并的条件是  watermark &gt;= window_end_time  并且当前窗口内有数据</li>
+<li>这样就可以在允许最大乱序时间内将同一个窗口的数据进行处理，如果数据超过了这个最大允许乱序时间，要怎么解决呢</li>
+</ul>
+</li>
+<li><p>late element 延迟数据的处理方案</p>
+<ul>
+<li>丢弃 系统默认的方法<ul>
+<li>直接将超过允许最大乱序时间的数据丢弃，不做任何处理</li>
+</ul>
+</li>
+<li>allowedLateness  指定允许数据延迟时间<ul>
+<li>再给迟到的数据一个提供一个宽容时间</li>
+<li>加上这个时间以后 在超过最大允许乱序时间以后 在宽容时间内 如果数据出现了 依然可以出发widow执行。</li>
+</ul>
+</li>
+<li>sideOutputLateDate  收集迟到的数据<ul>
+<li>通过sideOutputLateDate将迟到的数据进行统一收集进行存储，方便 以后的问题排查处理</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>Flink应该如何设置最大乱序时间</p>
 <ul>
 <li>这个要结合自己的业务以及数据情况去设置。如果maxOutOfOrderness设置的太小，而自身数据发送时由于网络等原因导致乱序或者late太多，那么最终的结果就是会有很多单条的数据在window中被触发，数据的正确性影响太大</li>
 <li>对于严重乱序的数据，需要严格统计数据最大延迟时间，才能保证计算的数据准确，延时设置太小会影响数据准确性，延时设置太大不仅影响数据的实时性，更加会加重Flink作业的负担，不是对eventTime要求特别严格的数据，尽量不要采用eventTime方式来处理，会有丢数据的风险。</li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<h3 id="Flink-并行度详解-Parallel"><a href="#Flink-并行度详解-Parallel" class="headerlink" title="Flink 并行度详解(Parallel )"></a>Flink 并行度详解(Parallel )</h3><h4 id="TaskManager-与-Slot"><a href="#TaskManager-与-Slot" class="headerlink" title="TaskManager 与 Slot"></a>TaskManager 与 Slot</h4><ul>
+<li>Flink的每个TaskManager为集群提供solt。 solt的数量通常与每个TaskManager节点的可用CPU内核数成比例。一般情况下你的slot数是你每个节点的cpu的核数。<ul>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567433392285.png" alt="1567433392285"></li>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567433422808.png" alt="1567433422808"></li>
+</ul>
+</li>
+</ul>
+<h4 id="并行度（Parallel）"><a href="#并行度（Parallel）" class="headerlink" title="并行度（Parallel）"></a>并行度（Parallel）</h4><ul>
+<li>一个Flink程序由多个任务组成(source、transformation和 sink)。 一个任务由多个并行的实例(线程)来执行， 一个任务的并行实例(线程)数目就被称为该任务的并行度。</li>
+<li>一个任务的并行度设置可以从多个层次指定<ul>
+<li>Operator Level（算子层次）</li>
+<li>Execution Environment Level（执行环境层次）</li>
+<li>Client Level（客户端层次）</li>
+<li>System Level（系统层次）</li>
+</ul>
+</li>
+<li>并行度设置之Operator Level<ul>
+<li>一个算子、数据源和sink的并行度可以通过调用 setParallelism()方法来指定</li>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567433659150.png" alt="1567433659150"></li>
+</ul>
+</li>
+<li>并行度设置之Execution Environment Level<ul>
+<li>执行环境(任务)的默认并行度可以通过调用setParallelism()方法指定。为了以并行度3来执行所有的算子、数据源和data sink， 可以通过如下的方式设置执行环境的并行度</li>
+<li>执行环境的并行度可以被算子的并行度覆盖重写</li>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567433733701.png" alt="1567433733701"></li>
+</ul>
+</li>
+<li>并行度设置之Client Level<ul>
+<li>并行度可以在客户端将job提交到Flink时设定。</li>
+<li>对于CLI客户端，可以通过-p参数指定并行度</li>
+<li>./bin/flink run <strong>-p</strong> 10 WordCount-java.jar</li>
+</ul>
+</li>
+<li>并行度设置之System Level<ul>
+<li>在系统级可以通过设置flink-conf.yaml文件中的parallelism.default属性来指定所有执行环境的默认并行度</li>
+</ul>
+</li>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567433861193.png" alt="1567433861193"></li>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567433868135.png" alt="1567433868135"></li>
+</ul>
+<h3 id="Flink的checkpoint机制"><a href="#Flink的checkpoint机制" class="headerlink" title="Flink的checkpoint机制"></a>Flink的checkpoint机制</h3><h4 id="checkpoint简介"><a href="#checkpoint简介" class="headerlink" title="checkpoint简介"></a>checkpoint简介</h4><ul>
+<li>为了保证state的容错性，Flink需要对state进行checkpoint</li>
+<li>Checkpoint是Flink实现容错机制最核心的功能，它能够根据配置周期性地基于Stream中各个Operator/task的状态来生成快照，从而将这些状态数据定期持久化存储下来，当Flink程序一旦意外崩溃时，重新运行程序时可以有选择地从这些快照进行恢复，从而修正因为故障带来的程序数据异常</li>
+<li>Flink的checkpoint机制可以与(stream和state)的持久化存储交互的前提：<ul>
+<li>持久化的source，它需要支持在一定时间内重放事件。这种sources的典型例子是持久化的消息队列（比如Apache  Kafka，RabbitMQ等）或文件系统（比如HDFS，S3，GFS等）</li>
+<li>用于state的持久化存储，例如分布式文件系统（比如HDFS，S3，GFS等）</li>
+</ul>
+</li>
+</ul>
+<h4 id="checkpoint的配置"><a href="#checkpoint的配置" class="headerlink" title="checkpoint的配置"></a>checkpoint的配置</h4><ul>
+<li><p>默认的情况下 checkpoint是disabled不可用状态，想要使用的时候先开启</p>
+</li>
+<li><p>checkpoint的checkPointMode有两种，Exactly-once(默认)和At-least-once</p>
+</li>
+<li><p>Exactly-once对于大多数应用来说是最合适的。At-least-once可能用在某些延迟超低的应用程序（始终延迟为几毫秒）</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line"><span class="comment">// 每隔1000 ms进行启动一个检查点【设置checkpoint的周期】</span></span><br><span class="line">env.enableCheckpointing(<span class="number">1000</span>);</span><br><span class="line"><span class="comment">// 高级选项：</span></span><br><span class="line"><span class="comment">// 设置模式为exactly-once （这是默认值）</span></span><br><span class="line">env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);</span><br><span class="line"><span class="comment">// 确保检查点之间有至少500 ms的间隔【checkpoint最小间隔】</span></span><br><span class="line">env.getCheckpointConfig().setMinPauseBetweenCheckpoints(<span class="number">500</span>);</span><br><span class="line"><span class="comment">// 检查点必须在一分钟内完成，或者被丢弃【checkpoint的超时时间】</span></span><br><span class="line">env.getCheckpointConfig().setCheckpointTimeout(<span class="number">60000</span>);</span><br><span class="line"><span class="comment">// 同一时间只允许进行一个检查点</span></span><br><span class="line">env.getCheckpointConfig().setMaxConcurrentCheckpoints(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 表示一旦Flink处理程序被cancel后，会保留Checkpoint数据，以便根据实际需要恢复到指定的Checkpoint</span></span><br><span class="line">env.getCheckpointConfig().enableExternalizedCheckpoints(ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="state-Backend-状态的后端存储"><a href="#state-Backend-状态的后端存储" class="headerlink" title="state Backend 状态的后端存储"></a>state Backend 状态的后端存储</h4><ul>
+<li><p>默认情况下，state会保存在taskmanager的内存中，checkpoint会存储在JobManager的内存中。</p>
+</li>
+<li><p>state 和checkpoint的存储位置取决于State Backend的配置  可以在程序中修改</p>
+<ul>
+<li>env.setStateBackend(…)</li>
+</ul>
+</li>
+<li><p>三种state Backend</p>
+</li>
+<li><p>MemoryStateBackend</p>
+<ul>
+<li>state数据保存在java堆内存中，执行checkpoint的时候，会把state的快照数据保存到jobmanager的内存中</li>
+<li>基于内存的state backend在生产环境下不建议使用</li>
+</ul>
+</li>
+<li><p>FsStateBackend</p>
+<ul>
+<li>state数据保存在taskmanager的内存中，执行checkpoint的时候，会把state的快照数据保存到配置的文件系统中</li>
+<li>可以使用hdfs等分布式文件系统</li>
+</ul>
+</li>
+<li><p><strong>RocksDBStateBackend</strong></p>
+<ul>
+<li>RocksDB跟上面的都略有不同，它会在本地文件系统中维护状态，state会直接写入本地rocksdb中。同时它需要配置一个远端的filesystem uri（一般是HDFS），在做checkpoint的时候，会把本地的数据直接复制到filesystem中。fail over的时候从filesystem中恢复到本地</li>
+<li>RocksDB克服了state受内存限制的缺点，同时又能够持久化到远端文件系统中，比较适合在生产中使用</li>
+</ul>
+</li>
+<li><p>修改state Backend </p>
+<ul>
+<li><p><strong>单任务调整</strong></p>
+</li>
+<li><p>修改当前任务代码</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">env.setStateBackend(new FsStateBackend(&quot;hdfs://namenode:9000/flink/checkpoints&quot;));</span><br><span class="line">or new MemoryStateBackend()</span><br><span class="line">or new RocksDBStateBackend(filebackend, true);【需要添加第三方依赖】</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>全局调整</p>
+</li>
+<li><p>修改flink-conf.yaml</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">state.backend: filesystem</span><br><span class="line">state.checkpoints.dir: hdfs:<span class="comment">//namenode:9000/flink/checkpoints</span></span><br><span class="line">注意：state.backend的值可以是下面几种：jobmanager(MemoryStateBackend), filesystem(FsStateBackend), rocksdb(RocksDBStateBackend)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Flink-Kafka-Connector详解"><a href="#Flink-Kafka-Connector详解" class="headerlink" title="Flink Kafka-Connector详解"></a>Flink Kafka-Connector详解</h3><h4 id="kafka-connector简介"><a href="#kafka-connector简介" class="headerlink" title="kafka-connector简介"></a>kafka-connector简介</h4><ul>
+<li>Kafka中的partition机制和Flink的并行度机制深度结合</li>
+<li>Kafka可以作为Flink的source和sink</li>
+<li>任务失败，通过设置kafka的offset来恢复应用</li>
+</ul>
+<h4 id="kafka-consumer消费者策略"><a href="#kafka-consumer消费者策略" class="headerlink" title="kafka-consumer消费者策略"></a>kafka-consumer消费者策略</h4><ul>
+<li><strong>setStartFromGroupOffsets()</strong>【默认消费策略】<ul>
+<li>默认读取上次保存的offset信息</li>
+<li>如果是应用第一次启动，读取不到上次的offset信息，则会根据这个参数auto.offset.reset的值来进行消费数据</li>
+</ul>
+</li>
+<li>setStartFromEarliest()<ul>
+<li>从最早的数据开始进行消费，忽略存储的offset信息</li>
+</ul>
+</li>
+<li><strong>setStartFromLatest()</strong><ul>
+<li>从最新的数据进行消费，忽略存储的offset信息</li>
+</ul>
+</li>
+<li>setStartFromSpecificOffsets(Map&lt;KafkaTopicPartition,Long&gt;)<ul>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567435618888.png" alt="1567435618888"></li>
+</ul>
+</li>
+</ul>
+<h4 id="kafka的容错"><a href="#kafka的容错" class="headerlink" title="kafka的容错"></a>kafka的容错</h4><ul>
+<li>当checkpoint机制开启的时候，Kafka Consumer会定期把kafka的offset信息还有其他operator的状态信息一块保存起来。当job失败重启的时候，Flink会从最近一次的checkpoint中进行恢复数据，重新消费kafka中的数据。</li>
+<li>为了能够使用支持容错的kafka Consumer，需要开启checkpoint<ul>
+<li>env.enableCheckpointing(5000); // 每5s checkpoint一次</li>
+</ul>
+</li>
+</ul>
+<h4 id="动态加载topic"><a href="#动态加载topic" class="headerlink" title="动态加载topic"></a>动态加载topic</h4><ul>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567435791533.png" alt="1567435791533"></li>
+</ul>
+<h4 id="kafka-consumer-offset-自动提交"><a href="#kafka-consumer-offset-自动提交" class="headerlink" title="kafka consumer offset 自动提交"></a>kafka consumer offset 自动提交</h4><ul>
+<li>针对job是否开启checkpoint来区分<ul>
+<li>Checkpoint关闭时： 可以通过下面两个参数配置<ul>
+<li>enable.auto.commit</li>
+<li>auto.commit.interval.ms</li>
+</ul>
+</li>
+<li>Checkpoint开启时：当执行checkpoint的时候才会保存offset，这样保证了kafka的offset和checkpoint的状态偏移量保持一致。<ul>
+<li>可以通过这个参数设置setCommitOffsetsOnCheckpoints(boolean)这个参数默认就是true。表示在checkpoint的时候提交offset 此时，kafka中的自动提交机制就会被忽略</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Kafka-Producer"><a href="#Kafka-Producer" class="headerlink" title="Kafka Producer"></a>Kafka Producer</h4><ul>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567436059578.png" alt="1567436059578"></li>
+</ul>
+<h4 id="kafka-producer-的容错-kafka0-9-与-0-10"><a href="#kafka-producer-的容错-kafka0-9-与-0-10" class="headerlink" title="kafka producer 的容错  kafka0.9 与 0.10"></a>kafka producer 的容错  kafka0.9 与 0.10</h4><ul>
+<li>如果Flink开启了checkpoint，针对FlinkKafkaProducer09和FlinkKafkaProducer010 可以提供 at-least-once的语义，还需要配置下面两个参数<ul>
+<li>setLogFailuresOnly(false)</li>
+<li>setFlushOnCheckpoint(true)</li>
+</ul>
+</li>
+<li>注意：建议修改kafka 生产者的重试次数<ul>
+<li>retries【这个参数的值默认是0】</li>
+</ul>
+</li>
+</ul>
+<h4 id="Kafka-Producer的容错-Kafka-0-11"><a href="#Kafka-Producer的容错-Kafka-0-11" class="headerlink" title="Kafka Producer的容错-Kafka 0.11"></a>Kafka Producer的容错-Kafka 0.11</h4><ul>
+<li>如果Flink开启了checkpoint，针对FlinkKafkaProducer011 就可以提供<br>exactly-once的语义</li>
+<li>但是需要选择具体的语义<ul>
+<li>Semantic.NONE</li>
+<li>Semantic.AT_LEAST_ONCE【默认】</li>
+<li>Semantic.EXACTLY_ONCE</li>
 </ul>
 </li>
 </ul>
@@ -820,10 +1020,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-02T09:36:30+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-03T11:35:57+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年9月2日</p>
+    <p>最后更新于 2019年9月3日</p>
   </a>
 </div>
 
@@ -1040,7 +1240,7 @@ Flink详细介绍Flink API的抽象级别"
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flink详细介绍"><span class="toc-text">Flink详细介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-API的抽象级别"><span class="toc-text">Flink API的抽象级别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-DataStreamAPI"><span class="toc-text">Flink DataStreamAPI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DataSource"><span class="toc-text">DataSource</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformation"><span class="toc-text">Transformation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sink"><span class="toc-text">sink</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-DataSetAPI"><span class="toc-text">Flink DataSetAPI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DataSource-1"><span class="toc-text">DataSource</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformations"><span class="toc-text">Transformations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sink-1"><span class="toc-text">sink</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-SQL"><span class="toc-text">Flink SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-Broadcast-amp-Accumulators-amp-Counters"><span class="toc-text">Flink Broadcast &amp; Accumulators &amp; Counters</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Broadcast广播变量"><span class="toc-text">Broadcast广播变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Accumulators-累加器"><span class="toc-text">Accumulators 累加器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Counters-计数器"><span class="toc-text">Counters 计数器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#广播变量-Broadcast-与-累加变量-Accumlators的区别"><span class="toc-text">广播变量 Broadcast 与 累加变量 Accumlators的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-Window和Time详解"><span class="toc-text">Flink Window和Time详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Window窗口"><span class="toc-text">Window窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Time介绍"><span class="toc-text">Time介绍</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flink详细介绍"><span class="toc-text">Flink详细介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-API的抽象级别"><span class="toc-text">Flink API的抽象级别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-DataStreamAPI"><span class="toc-text">Flink DataStreamAPI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DataSource"><span class="toc-text">DataSource</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformation"><span class="toc-text">Transformation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sink"><span class="toc-text">sink</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-DataSetAPI"><span class="toc-text">Flink DataSetAPI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DataSource-1"><span class="toc-text">DataSource</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformations"><span class="toc-text">Transformations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sink-1"><span class="toc-text">sink</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-SQL"><span class="toc-text">Flink SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-Broadcast-amp-Accumulators-amp-Counters"><span class="toc-text">Flink Broadcast &amp; Accumulators &amp; Counters</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Broadcast广播变量"><span class="toc-text">Broadcast广播变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Accumulators-累加器"><span class="toc-text">Accumulators 累加器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Counters-计数器"><span class="toc-text">Counters 计数器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#广播变量-Broadcast-与-累加变量-Accumlators的区别"><span class="toc-text">广播变量 Broadcast 与 累加变量 Accumlators的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-Window和Time详解"><span class="toc-text">Flink Window和Time详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Window窗口"><span class="toc-text">Window窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Time介绍"><span class="toc-text">Time介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-并行度详解-Parallel"><span class="toc-text">Flink 并行度详解(Parallel )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TaskManager-与-Slot"><span class="toc-text">TaskManager 与 Slot</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#并行度（Parallel）"><span class="toc-text">并行度（Parallel）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink的checkpoint机制"><span class="toc-text">Flink的checkpoint机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#checkpoint简介"><span class="toc-text">checkpoint简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#checkpoint的配置"><span class="toc-text">checkpoint的配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#state-Backend-状态的后端存储"><span class="toc-text">state Backend 状态的后端存储</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink-Kafka-Connector详解"><span class="toc-text">Flink Kafka-Connector详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka-connector简介"><span class="toc-text">kafka-connector简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka-consumer消费者策略"><span class="toc-text">kafka-consumer消费者策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka的容错"><span class="toc-text">kafka的容错</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#动态加载topic"><span class="toc-text">动态加载topic</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka-consumer-offset-自动提交"><span class="toc-text">kafka consumer offset 自动提交</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka-Producer"><span class="toc-text">Kafka Producer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka-producer-的容错-kafka0-9-与-0-10"><span class="toc-text">kafka producer 的容错  kafka0.9 与 0.10</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka-Producer的容错-Kafka-0-11"><span class="toc-text">Kafka Producer的容错-Kafka 0.11</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
