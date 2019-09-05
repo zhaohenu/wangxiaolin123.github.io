@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>kafka | ZBlog</title>
+  
+  
+  <meta name="description" content="技术和生活，融为一体">
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="ZBlog">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>ZBlog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          ZBlog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;所有博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogcategories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogtags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogarchives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2018/03/05/2018-03-05-kafka/">
+        kafka
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>赵鑫涛</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-03-05</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/基础/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>基础</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567689200606.png" alt="1567689200606"></p>
+<h2 id="kafka"><a href="#kafka" class="headerlink" title="kafka"></a>kafka</h2><h3 id="消息队列的简介"><a href="#消息队列的简介" class="headerlink" title="消息队列的简介"></a>消息队列的简介</h3><a id="more"></a>
+
+<h4 id="消息队列的介绍"><a href="#消息队列的介绍" class="headerlink" title="消息队列的介绍"></a>消息队列的介绍</h4><ul>
+<li>消息队列（message queue） 简称为MQ</li>
+<li>是消息加队列，即保存消息的队列。消息传输过程中的容器</li>
+<li>主要是提供了消费、生产接口供外部调用，做数据的存储以及读取</li>
+</ul>
+<h4 id="消息队列的分类"><a href="#消息队列的分类" class="headerlink" title="消息队列的分类"></a>消息队列的分类</h4><ul>
+<li>消息队列大致可分为两种：点对点（P to P)  发布订阅（Pub/Sub）</li>
+<li>两者的共同点<ul>
+<li>消息生产者生产消息发送到queue中，然后消息消费者从queue中读取并且消费消息。</li>
+</ul>
+</li>
+<li>两者的不同点<ul>
+<li>P2P模型包含：消息队列(Queue)、发送者(Sender)、接收者(Receiver)<ul>
+<li>一个生产者生产的消息只有一个消费者(Consumer)消费（即一旦被消费，消息就不在消息队列中）</li>
+</ul>
+</li>
+<li>Pub/Sub包含：消息队列(Queue)、主题（Topic）、发布者（Publisher）、订阅者（Subscriber）<ul>
+<li>每个消息可以有多个消费者，彼此互不影响。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="kafka简介"><a href="#kafka简介" class="headerlink" title="kafka简介"></a>kafka简介</h3><ul>
+<li><strong>Kafka</strong>是<strong>分布式</strong>的 <strong>发布-订阅消息系统 *<em>。它最初由LinkedIn[领英] 公司开发，使用 *</em>Scala语言编写</strong> ,于2010年12月份开源，成为Apache 顶级项目。Kafka 是一个<strong>高吞吐量</strong>的、<strong>持久性</strong>的、<strong>分布式</strong>发布订阅消息系统。它主要用于处理活跃的数据（登录、浏览、点击、分享等用户行为产生的数据）</li>
+<li>高吞吐量：可以满足每秒百万级别的消息的生产以及发布<ul>
+<li>快的原因：磁盘的顺序读写超过内存的随机读写</li>
+</ul>
+</li>
+<li>持久性：有一套完善的存储机制，确保数据的高效安全的持久化</li>
+<li>分布式：基于分布式的扩展、容错机制，kafka的数据会复制到几台机器上。当某一天机器发生故障的时候，生产者和消费者会选择其他机器</li>
+</ul>
+<h3 id="kafka常用指令"><a href="#kafka常用指令" class="headerlink" title="kafka常用指令"></a>kafka常用指令</h3><h4 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h4><ul>
+<li>启动指令：bin/kafka-server-start.sh  -daemon config/server.properties </li>
+<li>关闭指令  :  bin/kafka-server-stop.sh</li>
+</ul>
+<h4 id="topic-操作"><a href="#topic-操作" class="headerlink" title="topic 操作"></a>topic 操作</h4><ul>
+<li><p>增：增加一个topic 为他分配一个分区 一个副本  （副本、分区都是按照实际情况决定的）</p>
+<ul>
+<li><p>bin/kafka-topics.sh   –create<br>–zookeeper localhost:2181 </p>
+<p>–replication-factor 1</p>
+<p>–partitions 1</p>
+<p>–topic hello</p>
+<p>注意：副本数量 不能大于集群中节点数量</p>
+</li>
+</ul>
+</li>
+<li><p>删：删除topic</p>
+<ul>
+<li><p>bin/kafka-topics.sh –delete<br>–zookeeper localhost:2181 </p>
+<p>–topic hello</p>
+<p>注意：需要开启topic的删除功能 默认情况下是关闭的</p>
+<p>conf/server.properties中delete.topic.enable=true</p>
+</li>
+</ul>
+</li>
+<li><p>改：修改topic的分区数量  分区只能增加不能减少</p>
+<ul>
+<li><p>bin/kafka-topics.sh –alter<br>–zookeeper localhost:2181 </p>
+<p>–partitions 5 </p>
+<p>–topic hello</p>
+</li>
+</ul>
+</li>
+<li><p>查：查询topic的信息</p>
+<ul>
+<li><p>bin/kafka-topics.sh –describe<br>–zookeeper localhost:2181 </p>
+<p>–topic hello</p>
+<p>查询指定的topic hello</p>
+</li>
+<li><p>bin/kafka-topics.sh –list<br>–zookeeper localhost:2181</p>
+<p>查询所有的topic</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="生产消费者操作"><a href="#生产消费者操作" class="headerlink" title="生产消费者操作"></a>生产消费者操作</h4><ul>
+<li><p>创建生产者必须的参数</p>
+<ul>
+<li><p>broker-list：kafka的服务地址</p>
+</li>
+<li><p>topic：具体的单个topic</p>
+</li>
+<li><p>bin/kafka-console-producer.sh<br>–broker-list localhost:9092 </p>
+<p>–topic hello</p>
+</li>
+</ul>
+</li>
+<li><p>创建消费者必须的参数</p>
+<ul>
+<li><p>bootstrap-server：kafka的服务地址</p>
+</li>
+<li><p>topic：具体的topic</p>
+</li>
+<li><p>bin/kafka-console-consumer.sh<br>–bootstrap-server localhost:9092 </p>
+<p>–topic hello </p>
+<p>[–from-beginning]  是否从头开始消费 不指定的话只会消费最新的数据</p>
+<p>注意：被标记为删除状态的topic也可以用</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="kafka组件"><a href="#kafka组件" class="headerlink" title="kafka组件"></a>kafka组件</h3><h4 id="kafka的组件"><a href="#kafka的组件" class="headerlink" title="kafka的组件"></a>kafka的组件</h4><ul>
+<li>Broker：消息的代理，kafka集群中的每一个kafka服务节点称为是一个broker，主要存储消息数据，存在硬盘当中。</li>
+<li>Topic：主题，kafka处理消息的不同分类</li>
+<li>Partition：Topic物理上的分组，一个topic在broker中被分为一个或者多个分区partition，分区在创建topic的时候指定，每个topic都是有分区的。</li>
+<li>Message：消息，是通信的基本单位，每一个消息都属于一个partition</li>
+<li>Broker&gt;topic&gt;parition&gt;message</li>
+</ul>
+<h4 id="kafka的相关组件"><a href="#kafka的相关组件" class="headerlink" title="kafka的相关组件"></a>kafka的相关组件</h4><ul>
+<li>Producer：消息和数据的生产者，向kafka的一个topic发布消息</li>
+<li>Consumer：消息和数据的消费者，订阅topic并处理其发布的消息</li>
+<li>zookeeper：协调kafka的正常运行</li>
+</ul>
+<h4 id="kafka的架构图"><a href="#kafka的架构图" class="headerlink" title="kafka的架构图"></a>kafka的架构图</h4><ul>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567690534602.png" alt="1567690534602"></li>
+</ul>
+<h4 id="broker组件扩展"><a href="#broker组件扩展" class="headerlink" title="broker组件扩展"></a>broker组件扩展</h4><ul>
+<li>为了减少磁盘写入次数，broker沪江消息暂时buffer缓存起来，当消息达到了一定的阈值以后会这是达到了一定的时间间隔以后会flash到磁盘中，减少磁盘io<ul>
+<li>配置 ：Log Flush Policy</li>
+<li>log.flush.interval.messages=10000    一个分区的消息数阀值</li>
+<li>log.flush.interval.ms=1000     时间阈值</li>
+</ul>
+</li>
+<li>kafka的消息保存一定时间（通常为7天）后会被删除。<ul>
+<li>配置：Log Retention Policy </li>
+<li>log.retention.hours=168    保存时间</li>
+<li>log.retention.bytes=1073741824   保存数据量</li>
+<li>log.retention.check.interval.ms=300000    每隔多长时间检查一下哪些部分可以被删除</li>
+</ul>
+</li>
+</ul>
+<h4 id="producer-扩展"><a href="#producer-扩展" class="headerlink" title="producer 扩展"></a>producer 扩展</h4><ul>
+<li><strong>Producer：配置文件：producer.properties</strong></li>
+<li>自定义partition<ul>
+<li>Producer也根据用户设置的算法来根据消息的key来计算输入哪个partition：partitioner.class[默认是随机发送到不同分区]</li>
+</ul>
+</li>
+<li>异步或者同步发送<ul>
+<li>配置producer.type</li>
+<li>同步发送：发送方发出数据后，等待对方回复以后在发送下一个数据</li>
+<li>异步发送：发送数据后，不等对方回复就直接发送下一条数据</li>
+<li>配置：acks</li>
+<li>当producer.type为同步的时候，会等待接收方确认</li>
+<li>acks默认是1，表示需要收到leader节点的消息回复</li>
+<li>acks：-1   表示需要收到所有子节点的恢复</li>
+<li>acks：0  表示不需要任何节点的恢复</li>
+</ul>
+</li>
+</ul>
+<h4 id="consumer-扩展"><a href="#consumer-扩展" class="headerlink" title="consumer 扩展"></a>consumer 扩展</h4><ul>
+<li><strong>配置文件：consumer.properties</strong></li>
+<li>每个consumer属于同一个消费者组，可以指定消费者组的ID。Group ID</li>
+<li>消费形式:<ul>
+<li>组内：组内的消费者消费同一份数据</li>
+<li>同时只能有一个consumer消费一个topic中的一个partition</li>
+<li>一个consumer可以消费多个partitions中的消息。</li>
+<li>所以，对于一个topic,同一个group中推荐不能有多于partitions个数的consumer消费者,否则将意味着某些consumer将无法得到消息。</li>
+<li>组间：每个group消费同一部分数据但是互不影响</li>
+</ul>
+</li>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567685588457.png" alt="1567685588457"></li>
+</ul>
+<h4 id="topic、partition、message"><a href="#topic、partition、message" class="headerlink" title="topic、partition、message"></a>topic、partition、message</h4><ul>
+<li>每个partition在存储层面是append log文件。新消息都会被直接追加到log文件的尾部，每条消息在log文件中的位置称为offset(偏移量)。</li>
+<li>每条Message包含了以下三个属性：<ul>
+<li>offset  对应类型：long  表示此消息在一个partition中的起始的位置。可以认为offset是partition中Message的id，自增的</li>
+<li>MessageSize  对应类型：int32 此消息的字节大小。</li>
+<li>data  是message的具体内容。</li>
+</ul>
+</li>
+<li>越多partitions可以容纳更多的consumer,有效提升并发消费的能力。</li>
+<li>总之：业务类型增加需要增加topic、数据量大需要增加partition。</li>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567685841410.png" alt="1567685841410"></li>
+</ul>
+<h3 id="kafka的Java操作"><a href="#kafka的Java操作" class="headerlink" title="kafka的Java操作"></a>kafka的Java操作</h3><ul>
+<li><p>需要关闭kafka的防火墙</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">生产者</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.producer.KafkaProducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.producer.ProducerRecord;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.common.serialization.StringSerializer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProducerDemo</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		Properties prop = <span class="keyword">new</span> Properties();</span><br><span class="line">		<span class="comment">//	指定kafka的broker地址</span></span><br><span class="line">		prop.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"hadoop100:9092,hadoop101:9092,hadoop102:9092"</span>);</span><br><span class="line">		<span class="comment">//	指定k-v数据的序列化格式</span></span><br><span class="line">		prop.put(<span class="string">"key.serializer"</span>, StringSerializer.class.getName());</span><br><span class="line">		prop.put(<span class="string">"value.serializer"</span>, StringSerializer.class.getName());</span><br><span class="line"></span><br><span class="line">		<span class="comment">//	指定topic信息</span></span><br><span class="line">		String topic = <span class="string">"hello"</span>; </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//	创建kafka生产者</span></span><br><span class="line">		KafkaProducer&lt;String, String&gt; producer = <span class="keyword">new</span> KafkaProducer&lt;String,String&gt;(prop);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//	向topic中生产数据</span></span><br><span class="line">		producer.send(<span class="keyword">new</span> ProducerRecord&lt;String, String&gt;(topic, <span class="string">"hello kafka"</span>));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//	关闭链接</span></span><br><span class="line">		producer.close();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">消费者</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.consumer.ConsumerRecord;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.consumer.ConsumerRecords;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.consumer.KafkaConsumer;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.common.serialization.StringDeserializer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConsumerDemo</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		Properties prop = <span class="keyword">new</span> Properties();</span><br><span class="line">		<span class="comment">//	指定kafka的broker地址</span></span><br><span class="line">		prop.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"hadoop100:9092,hadoop101:9092,hadoop102:9092"</span>);</span><br><span class="line">		<span class="comment">//	指定key-value的反序列化类型</span></span><br><span class="line">		prop.put(<span class="string">"key.deserializer"</span>, StringDeserializer.class.getName());</span><br><span class="line">		prop.put(<span class="string">"value.deserializer"</span>, StringDeserializer.class.getName());</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//	指定group.id</span></span><br><span class="line">		prop.put(<span class="string">"group.id"</span>, <span class="string">"con-1"</span>);</span><br><span class="line">		<span class="comment">//	创建消费者</span></span><br><span class="line">		KafkaConsumer&lt;String, String&gt; consumer = <span class="keyword">new</span> KafkaConsumer&lt;String,String&gt;(prop);</span><br><span class="line">		Collection&lt;String&gt; topics = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		topics.add(<span class="string">"hello"</span>);</span><br><span class="line">		<span class="comment">//	订阅指定的topic</span></span><br><span class="line">		consumer.subscribe(topics);</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">			<span class="comment">//	消费数据</span></span><br><span class="line">			ConsumerRecords&lt;String, String&gt; poll = consumer.poll(<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">for</span> (ConsumerRecord&lt;String,String&gt; consumerRecord : poll) &#123;</span><br><span class="line">				System.out.println(consumerRecord);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>kafka0.9版本以前，消费者的offset等信息保存在zookeeper中</p>
+<p>从kafka0.9开始，使用新的API的话，消费者的信息会保存在kafka里面的__consumer_offsets这个topic中。</p>
+<p>因为频繁操作zk性能不高，所以kafka自己在topic中负责维护消费者信息。</p>
+<p>如何查询保存在kafka中的消费者的offset信息呢？</p>
+<p>bin/kafka-consumer-groups.sh –describe –bootstrap-server localhost:9092 –new-consumer –group consumer1</p>
+</li>
+<li><p>当一个消费者消费一个partition时候，消费的顺序和此partition消息的生产的顺序是一致的。</p>
+</li>
+<li><p>当一个消费者消费多个partition时候，消费者按照partition的顺序，首先消费一个partition，当消费完一个partition最新的消息后再消费其它的partition中的数据。</p>
+</li>
+<li><p>总之：如果一个消费者消费多个partiton的话只能保证消费的顺序在一个partition是顺序的。</p>
+</li>
+</ul>
+<h3 id="kafka集群"><a href="#kafka集群" class="headerlink" title="kafka集群"></a>kafka集群</h3><ul>
+<li><p>zookeeper支持维护多个kafka集群</p>
+</li>
+<li><p>设置</p>
+<ul>
+<li><p>server.properties里面配置修改：</p>
+<p>zookeeper.connect=192.168.100.100:2181</p>
+</li>
+<li><p>kafka-topics.sh的操作的zk设置统一加上/demo1例如：</p>
+<p>创建hello：</p>
+<p>bin/kafka-topics.sh –create –zookeeper 192.168.100.100:2181/demo1 –replication-factor 2 –partitions 3 –topic hello2</p>
+</li>
+<li><p>消费者的zk设置：</p>
+<p>bin/kafka-console-consumer.sh –zookeeper 192.168.100.100:2181/demo1 –topic hello2 –from-beginning</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="kafka存储、容错、扩展机制"><a href="#kafka存储、容错、扩展机制" class="headerlink" title="kafka存储、容错、扩展机制"></a>kafka存储、容错、扩展机制</h3><h4 id="存储机制"><a href="#存储机制" class="headerlink" title="存储机制"></a>存储机制</h4><ul>
+<li>在kafka中每个topic包含1到多个partition，每个partition存储一部分Message。每条Message包含了以下三个属性，其中有一个是offset。</li>
+<li>offset相当于partition中这个message的唯一id，那么怎么通过id高效的找到message？</li>
+<li>分段加索引<ul>
+<li>每个partition有多个segment【片段】组成，每个segment中存储多条消息   （分段）</li>
+<li>每个partition在内存中对应一个index（索引），记录每个segment中的第一条消息偏移。</li>
+<li>具体实现流程：发布者发到某个topic的消息会被分布到多个partition上（随机或根据用户指定的函数进行分布），broker收到消息后往对应partition的最后一个segment上添加该消息，segment达到一定的大小后将不会再往该segment写数据，broker会创建新的segment。</li>
+</ul>
+</li>
+<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567686695176.png" alt="1567686695176"></li>
+</ul>
+<h4 id="容错机制"><a href="#容错机制" class="headerlink" title="容错机制"></a>容错机制</h4><ul>
+<li>kafka中容错机制的保障就是他的副本机制<ul>
+<li>当kafka集群中的一个broker挂掉（fails），则zk会选择新的broker提供服务[kill<br>-9 杀掉hadoop100（出问题的节点）的进程测试]</li>
+<li>当新加入一个节点zk会自动识别并在适当的机会选择此节点提供服务[再次启动杀掉的hadoop100节点（修复以后重新加入集群的节点）测试]</li>
+</ul>
+</li>
+</ul>
+<h4 id="扩展机制"><a href="#扩展机制" class="headerlink" title="扩展机制"></a>扩展机制</h4><ul>
+<li><strong>启动后有个问题：发现启动后的这个节点不会是任何分区的leader？怎么重新均匀分配呢？</strong><ul>
+<li>Broker配置中的自动均衡策略（默认已经有）</li>
+<li>auto.leader.rebalance.enable=true</li>
+<li>leader.imbalance.check.interval.seconds<br>默认值：300。</li>
+<li>或者手动执行</li>
+<li>bin/kafka-preferred-replica-election.sh<br>–zookeeper hadoop100:2181,hadoop101:2181,hadoop102:2181</li>
+</ul>
+</li>
+</ul>
+<h3 id="kafka参数配置以及参数调优"><a href="#kafka参数配置以及参数调优" class="headerlink" title="kafka参数配置以及参数调优"></a>kafka参数配置以及参数调优</h3><h4 id="broker配置文件参数"><a href="#broker配置文件参数" class="headerlink" title="broker配置文件参数"></a>broker配置文件参数</h4><ul>
+<li><a href="http://kafka.apache.org/0110/documentation.html#topic-config" target="_blank" rel="noopener">http://kafka.apache.org/0110/documentation.html#topic-config</a></li>
+</ul>
+<h4 id="生产者配置文件参数"><a href="#生产者配置文件参数" class="headerlink" title="生产者配置文件参数"></a>生产者配置文件参数</h4><ul>
+<li><a href="http://kafka.apache.org/0110/documentation.html#producerconfigs" target="_blank" rel="noopener">http://kafka.apache.org/0110/documentation.html#producerconfigs</a></li>
+</ul>
+<h4 id="消费者配置文件参数"><a href="#消费者配置文件参数" class="headerlink" title="消费者配置文件参数"></a>消费者配置文件参数</h4><ul>
+<li><p><a href="http://kafka.apache.org/0110/documentation.html#consumerconfigs" target="_blank" rel="noopener">http://kafka.apache.org/0110/documentation.html#consumerconfigs</a></p>
+</li>
+<li><p>实例</p>
+<ul>
+<li><p>场景：flume从kafka中消费数据落地到hdfs</p>
+<p>flume1.7 kafka0.9.0.1</p>
+<p>现象：flume从kafka采集数据偶尔会出现错误，错误显示解析不到response内容，offset提交失败。flume会重复读取kafka中的数据。</p>
+<p>分析可能是由于网络原因导致offset提交超时</p>
+<p>解决方案：提高request.timeout.ms参数的超时时间(此参数默认是30000毫秒)</p>
+<p>agent1.sources.kafkaSource.kafka.consumer.request.timeout.ms=300000</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="JVM参数调优"><a href="#JVM参数调优" class="headerlink" title="JVM参数调优"></a>JVM参数调优</h4><ul>
+<li><p>修改bin/kafka-server-start.sh中的 KAFKA_HEAP_OPTS</p>
+<ul>
+<li><p>export KAFKA_HEAP_OPTS=”-Xmx10g<br>-Xms10g<br>-XX:MetaspaceSize=96m -XX:+UseG1GC -XX:MaxGCPauseMillis=20<br>-XX:InitiatingHeapOccupancyPercent=35 -XX:G1HeapRegionSize=16M<br>-XX:MinMetaspaceFreeRatio=50 -XX:MaxMetaspaceFreeRatio=80”</p>
+</li>
+<li><p>这个配置表示给kafka分配了10G内存，我们的服务器是16G内存</p>
+<p>默认kafka只会使用1G内存，通过jstat -gcutil pid 1000 查看到kafka进程GC情况</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="集群参数调优"><a href="#集群参数调优" class="headerlink" title="集群参数调优"></a>集群参数调优</h4><ul>
+<li><p><a href="http://kafka.apache.org/0110/documentation.html#config" target="_blank" rel="noopener">http://kafka.apache.org/0110/documentation.html#config</a></p>
+</li>
+<li><p>Replication configurations</p>
+<p>num.replica.fetchers=4</p>
+<p>replica.fetch.max.bytes=1048576</p>
+<p>replica.fetch.wait.max.ms=500</p>
+<p>replica.high.watermark.checkpoint.interval.ms=5000</p>
+<p>replica.socket.timeout.ms=30000</p>
+<p>如果集群之间网络不稳定的话，建议此参数再调大一些，提高到60s或者120s</p>
+<p>replica.socket.receive.buffer.bytes=65536</p>
+<p>replica.lag.time.max.ms=10000</p>
+<p>如果网络不好，或者kafka压力较大，建议调大该值，否则可能会频繁出现副本丢失，进而导致集群需要频繁复制副本，导致集群压力更大</p>
+<p>controller.socket.timeout.ms=30000</p>
+<p>controller.message.queue.size=10</p>
+</li>
+<li><p>Log configuration</p>
+<p>num.partitions=8</p>
+<p>message.max.bytes=1000000</p>
+<p>auto.create.topics.enable=true</p>
+<p>log.index.interval.bytes=4096</p>
+<p>log.index.size.max.bytes=10485760</p>
+<p>log.retention.hours=168</p>
+<p>log.flush.interval.ms=10000</p>
+<p>log.flush.interval.messages=20000</p>
+<p>log.flush.scheduler.interval.ms=2000</p>
+<p>log.roll.hours=168</p>
+<p>log.retention.check.interval.ms=300000</p>
+<p>log.segment.bytes=1073741824</p>
+</li>
+<li><p>ZK configuration</p>
+<p>zookeeper.connection.timeout.ms=6000</p>
+<p>zookeeper.sync.time.ms=2000</p>
+<p>可以稍微调大一点时间间隔，避免因为网络抖动导致误判节点下线</p>
+</li>
+<li><p>Socket server configuration</p>
+<p>num.io.threads=8</p>
+<p>num.network.threads=8</p>
+<p>socket.request.max.bytes=104857600</p>
+<p>socket.receive.buffer.bytes=1048576</p>
+<p>socket.send.buffer.bytes=1048576</p>
+<p>queued.max.requests=16</p>
+<p>fetch.purgatory.purge.interval.requests=100</p>
+<p>producer.purgatory.purge.interval.requests=100</p>
+</li>
+</ul>
+<h4 id="topic命名技巧"><a href="#topic命名技巧" class="headerlink" title="topic命名技巧"></a>topic命名技巧</h4><ul>
+<li><p>user_r2p10</p>
+<p>表示user这个topic的副本因子(r)是2，分区数(p)是10</p>
+<p>这样后期在写消费者代码的时候，根据topic名称就知道分区有多少个，可以很方便的设置多少个消费者线程。</p>
+</li>
+</ul>
+<h3 id="kafka集群的升级"><a href="#kafka集群的升级" class="headerlink" title="kafka集群的升级"></a>kafka集群的升级</h3><ul>
+<li><p>kafka集群的版本升级简单介绍</p>
+</li>
+<li><p>参考kafka官方文档：<a href="http://kafka.apache.org/090/documentation.html#upgrade" target="_blank" rel="noopener">http://kafka.apache.org/090/documentation.html#upgrade</a></p>
+</li>
+<li><p>简单尝试从kafka0.9.0.0 升级到kafka0.9.0.1</p>
+</li>
+<li><p>假设kafka0.9.0.0集群在三台服务器上，需要把这三台服务器上的kafka集群升级到0.9.0.1版本</p>
+<p>在集群升级的过程当中建议通过kafkamanager查看集群的状态信息，比较方便</p>
+<p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567688046049.png" alt="1567688046049"></p>
+</li>
+<li><p>1：先stop掉0.9.0.0集群中的第一个节点，然后去kafkamanager查看集群的broker信息，确认节点确实已停掉。并且再查看一下，节点的副本下线状态。确认是否识别到副本下线状态。</p>
+<p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567688068163.png" alt="1567688068163"></p>
+</li>
+<li><p>然后在当前节点把kafka0.9.0.1启动起来。再回到kafkamanager查看broker信息，确认刚启动的节点是否已正确显示，并且还要确认这个节点是否可以正常接收和发送数据。</p>
+<p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567688115030.png" alt="1567688115030"></p>
+</li>
+<li><p>按照第一步的流程去依次操作剩余节点即可，就是先把0.9.0.0版本的kafka停掉，再把0.9.0.1版本的kafka启动即可。</p>
+<p>注意：每操作一个节点，需要稍等一下，确认这个节点可以正常接收和发送数据之后，再处理下一个节点。</p>
+</li>
+</ul>
+<h3 id="kafka应用场景"><a href="#kafka应用场景" class="headerlink" title="kafka应用场景"></a>kafka应用场景</h3><ul>
+<li>作为消息队列的应用在传统的业务中使用高吞吐、分布式、使得处理大量业务内容轻松自如。</li>
+<li>作为互联网行业的日志行为实时分析,比如：实时统计用户浏览页面、搜索及其他行为，结合实时处理框架使用实现实时监控，或放到 hadoop/离线数据仓库里处理。</li>
+<li>作为一种为外部的持久性日志的分布式系统提供服务。主要利用节点间备份数据，文件存储、日志压缩等功能。</li>
+<li>支持三种语义<ul>
+<li>至少一次 at-least-once</li>
+<li>至多一次 at-most-once</li>
+<li>仅一次 exactly once</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-05T21:37:23+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年9月5日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/kafka/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>kafka</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/03/05/2018-03-05-kafka/&title=kafka | ZBlog&summary=
+kafka消息队列的简介"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2018/03/05/2018-03-05-kafka/&title=kafka | ZBlog&summary=
+kafka消息队列的简介"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/03/05/2018-03-05-kafka/&title=kafka | ZBlog&summary=
+kafka消息队列的简介"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2018/03/25/2018-03-25-Zookeeper简单总结/" rel="prev" title="Zookeeper简单总结">
+                                  
+                                      Zookeeper简单总结
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/zookeeper/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>zookeeper</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2017/10/25/2017-10-25 -Python提高/" rel="prev" title="Python提高">
+                                    
+                                        Python提高
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/Python-Python提高/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Python Python提高</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'kafka',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+            <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://raw.githubusercontent.com/zhaoxintaoaa/images/master/11.jpeg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="https://blog.csdn.net/qq_42244078"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:me@fastflink.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/zhaoxintaoaa"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://cdn.zrahh.com/music/music.html"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#kafka"><span class="toc-text">kafka</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#消息队列的简介"><span class="toc-text">消息队列的简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#消息队列的介绍"><span class="toc-text">消息队列的介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消息队列的分类"><span class="toc-text">消息队列的分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka简介"><span class="toc-text">kafka简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka常用指令"><span class="toc-text">kafka常用指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基础操作"><span class="toc-text">基础操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#topic-操作"><span class="toc-text">topic 操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生产消费者操作"><span class="toc-text">生产消费者操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka组件"><span class="toc-text">kafka组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka的组件"><span class="toc-text">kafka的组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka的相关组件"><span class="toc-text">kafka的相关组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka的架构图"><span class="toc-text">kafka的架构图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#broker组件扩展"><span class="toc-text">broker组件扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#producer-扩展"><span class="toc-text">producer 扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#consumer-扩展"><span class="toc-text">consumer 扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#topic、partition、message"><span class="toc-text">topic、partition、message</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka的Java操作"><span class="toc-text">kafka的Java操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka集群"><span class="toc-text">kafka集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka存储、容错、扩展机制"><span class="toc-text">kafka存储、容错、扩展机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#存储机制"><span class="toc-text">存储机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#容错机制"><span class="toc-text">容错机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扩展机制"><span class="toc-text">扩展机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka参数配置以及参数调优"><span class="toc-text">kafka参数配置以及参数调优</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#broker配置文件参数"><span class="toc-text">broker配置文件参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生产者配置文件参数"><span class="toc-text">生产者配置文件参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消费者配置文件参数"><span class="toc-text">消费者配置文件参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JVM参数调优"><span class="toc-text">JVM参数调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集群参数调优"><span class="toc-text">集群参数调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#topic命名技巧"><span class="toc-text">topic命名技巧</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka集群的升级"><span class="toc-text">kafka集群的升级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka应用场景"><span class="toc-text">kafka应用场景</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/blog/archives/" href="/blog/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="blogarchives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          文章归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          开源项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          主题文档
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于小站
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/基础/" href="/categories/基础/"><div class='name'>基础</div><div class='badge'>(12)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/安装部署/" href="/categories/安装部署/"><div class='name'>安装部署</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/提高/" href="/categories/提高/"><div class='name'>提高</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/调优/" href="/categories/调优/"><div class='name'>调优</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/问题分析/" href="/categories/问题分析/"><div class='name'>问题分析</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/ELK/" style="font-size: 14px; color: #999">ELK</a> <a href="/tags/Elasticsearch/" style="font-size: 24px; color: #555">Elasticsearch</a> <a href="/tags/Elasticsearch-IK/" style="font-size: 14px; color: #999">Elasticsearch IK</a> <a href="/tags/Elasticsearch脑裂问题/" style="font-size: 14px; color: #999">Elasticsearch脑裂问题</a> <a href="/tags/Elasticsearch调优/" style="font-size: 14px; color: #999">Elasticsearch调优</a> <a href="/tags/Flink/" style="font-size: 19px; color: #777">Flink</a> <a href="/tags/Linux/" style="font-size: 19px; color: #777">Linux</a> <a href="/tags/Python-Python提高/" style="font-size: 14px; color: #999">Python Python提高</a> <a href="/tags/Python-Python简介/" style="font-size: 14px; color: #999">Python Python简介</a> <a href="/tags/kafka/" style="font-size: 14px; color: #999">kafka</a> <a href="/tags/maven/" style="font-size: 14px; color: #999">maven</a> <a href="/tags/storm/" style="font-size: 19px; color: #777">storm</a> <a href="/tags/zookeeper/" style="font-size: 14px; color: #999">zookeeper</a>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+
+
+  <section class='widget music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn"
+    
+      rel="external nofollow noopener noreferrer"
+    
+    
+      target="_blank"
+    
+    href="https://music.163.com/#/user/home?id=63035382"
+    title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="2731158843"
+    data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="https://blog.csdn.net/qq_42244078"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:me@fastflink.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/zhaoxintaoaa"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://cdn.zrahh.com/music/music.html"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Blog Zhao</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+	
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1277958104'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1277958104%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+  </div>
+		<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+		<script>
+			var now = new Date(); 
+			function createtime() { 
+				var grt= new Date("08/10/2017 17:38:00");//在此处修改你的建站时间
+				now.setTime(now.getTime()+250); 
+				days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+				hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+				if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+				seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+				document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+			} 
+		setInterval("createtime()",250);
+		</script>
+		
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":120,"height":240,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+</html>
