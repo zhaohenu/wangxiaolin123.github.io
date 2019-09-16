@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives: 2019/5 | ZBlog</title>
+  <title>Tag: Elasticsearch脑裂问题以及调优 | ZBlog</title>
   
   
   <meta name="description" content="技术和生活，融为一体">
@@ -280,9 +280,11 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      <div class='l_main'>
-	
-		
+      
+<div class='l_main'>
+  
+    
+      
   <section class="post-list">
     
       
@@ -306,8 +308,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/05/25/2019-05-25-Map阶段环形缓冲区详细分析/">
-      Map阶段环形缓冲区详细分析
+    <a href="/2018/06/15/2018-06-15-Elasticsearch问题以及调优/">
+      Elasticsearch脑裂问题以及调优
     </a>
   </h2>
 
@@ -335,7 +337,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-05-25</p>
+    <p>2018-06-15</p>
   </a>
 </div>
 
@@ -345,9 +347,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/基础/' rel="nofollow">
+    <a href='/categories/调优/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>基础</p>
+      <p>调优</p>
     </a>
   </div>
 
@@ -374,24 +376,21 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1568111454070.png" alt="1568111454070"></p>
-<h2 id="Map阶段环形缓冲区详细分析"><a href="#Map阶段环形缓冲区详细分析" class="headerlink" title="Map阶段环形缓冲区详细分析"></a>Map阶段环形缓冲区详细分析</h2><ul>
-<li>这几天不是很忙，抽了点闲着的时间回头看了一下hadoop，看到map阶段的环形缓冲区想到自己刚开始的的时候每太弄明白，这次好好仔细看了一下，顺便把学习成果记录了下来</li>
-<li>在map阶段，每个map都有一个环形缓冲区，用于存储map的输出。这个环形缓冲区的默认大小是100MB，一旦数据达到我们的阈值0.8（可修改）的时候，会有一个后台线程将内容溢写到磁盘的指定目录下的一个新建的文件中。</li>
-<li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1568111782817.png" alt="1568111782817"></li>
-<li>内容溢写出去以后形成一个个文件，我们首先键这些文件进行分区排序得到一个排序后的文件</li>
-<li>这是会为每个文件的不同分区进行一个简单的combiner聚合操作（主要是为了减少数据量，减少后面所需要的IO的时间）</li>
-<li>我们将一个map产生的不同的文件进行一个简单的合并 在进行压缩后shuffle的磁盘中</li>
-<li>然后就就是后面的reduce操作了</li>
-<li>结合上面的图来说 这个过程还是很简单明了的</li>
-</ul>
-
+      <p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1567668608251.png" alt="1567668608251"></p>
+<h2 id="Elasticsearch问题以及调优"><a href="#Elasticsearch问题以及调优" class="headerlink" title="Elasticsearch问题以及调优"></a>Elasticsearch问题以及调优</h2>
+      
+        <div class="readmore">
+          <a href="/2018/06/15/2018-06-15-Elasticsearch问题以及调优/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
       
     </div>
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/hadoop/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>hadoop</a>
+          <a href="/tags/Elasticsearch脑裂问题以及调优/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>Elasticsearch脑裂问题以及调优</a>
         
       </div>
     
@@ -412,7 +411,8 @@
   
 
 
-	
+    
+  
 </div>
 <aside class='l_side'>
   
@@ -769,14 +769,6 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_1277958104'%3E%3C/span%3E%3C
 <script>setLoadingBarProgress(80);</script>
 
 
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
       <script>setLoadingBarProgress(60);</script>
