@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-16T12:51:09.279Z</updated>
+  <updated>2019-09-16T12:56:17.102Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,17 +21,14 @@
     <link href="http://yoursite.com/2019/05/25/2019-05-25-Map%E9%98%B6%E6%AE%B5%E7%8E%AF%E5%BD%A2%E7%BC%93%E5%86%B2%E5%8C%BA%E8%AF%A6%E7%BB%86%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2019/05/25/2019-05-25-Map阶段环形缓冲区详细分析/</id>
     <published>2019-05-24T16:00:00.000Z</published>
-    <updated>2019-09-16T12:51:09.279Z</updated>
+    <updated>2019-09-16T12:56:17.102Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1568111454070.png" alt="1568111454070"></p><h2 id="Map阶段环形缓冲区详细分析"><a href="#Map阶段环形缓冲区详细分析" class="headerlink" title="Map阶段环形缓冲区详细分析"></a>Map阶段环形缓冲区详细分析</h2><ul><li>这几天不是很忙，抽了点闲着的时间回头看了一下hadoop，看到map阶段的环形缓冲区想到自己刚开始的的时候每太弄明白，这次好好仔细看了一下，顺便把学习成果记录了下来</li><li>在map阶段，每个map都有一个环形缓冲区，用于存储map的输出。这个环形缓冲区的默认大小是100MB，一旦数据达到我们的阈值0.8（可修改）的时候，会有一个后台线程将内容溢写到磁盘的指定目录下的一个新建的文件中。</li><li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1568111782817.png" alt="1568111782817"></li><li>内容溢写出去以后形成一个个文件，我们首先键这些文件进行分区排序得到一个排序后的文件</li><li>这是会为每个文件的不同分区进行一个简单的combiner聚合操作（主要是为了减少数据量，减少后面所需要的IO的时间）</li><li>我们将一个map产生的不同的文件进行一个简单的合并 在进行压缩后shuffle的磁盘中</li><li>然后就就是后面的reduce操作了</li><li>结合上面的图来说 这个过程还是很简单明了的</li></ul>]]></content>
+    <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1568111454070.png" alt="1568111454070"></p><h2 id="Map阶段环形缓冲区详细分析"><a href="#Map阶段环形缓冲区详细分析" class="headerlink" title="Map阶段环形缓冲区详细分析"></a>Map阶段环形缓冲区详细分析</h2><a id="more"></a><ul><li>这几天不是很忙，抽了点闲着的时间回头看了一下hadoop，看到map阶段的环形缓冲区想到自己刚开始的的时候每太弄明白，这次好好仔细看了一下，顺便把学习成果记录了下来</li><li>在map阶段，每个map都有一个环形缓冲区，用于存储map的输出。这个环形缓冲区的默认大小是100MB，一旦数据达到我们的阈值0.8（可修改）的时候，会有一个后台线程将内容溢写到磁盘的指定目录下的一个新建的文件中。</li><li><img src="https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1568111782817.png" alt="1568111782817"></li><li>内容溢写出去以后形成一个个文件，我们首先键这些文件进行分区排序得到一个排序后的文件</li><li>这是会为每个文件的不同分区进行一个简单的combiner聚合操作（主要是为了减少数据量，减少后面所需要的IO的时间）</li><li>我们将一个map产生的不同的文件进行一个简单的合并 在进行压缩后shuffle的磁盘中</li><li>然后就就是后面的reduce操作了</li><li>结合上面的图来说 这个过程还是很简单明了的</li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1568111454070.png&quot; alt=&quot;1568111454070&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Map阶段环形缓冲区详细分析
-      
+      &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhaoxintaoaa/images/master/1568111454070.png&quot; alt=&quot;1568111454070&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Map阶段环形缓冲区详细分析&quot;&gt;&lt;a href=&quot;#Map阶段环形缓冲区详细分析&quot; class=&quot;headerlink&quot; title=&quot;Map阶段环形缓冲区详细分析&quot;&gt;&lt;/a&gt;Map阶段环形缓冲区详细分析&lt;/h2&gt;
     
     </summary>
     
